@@ -28,46 +28,6 @@
 </head>
 <body>
 
-<!--<nav class="navbar" role="navigation" aria-label="main navigation">-->
-<!--    <div class="navbar-brand">-->
-<!--        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">-->
-<!--            <span aria-hidden="true"></span>-->
-<!--            <span aria-hidden="true"></span>-->
-<!--            <span aria-hidden="true"></span>-->
-<!--        </a>-->
-<!--    </div>-->
-<!--    <div class="navbar-menu">-->
-<!--        <div class="navbar-start" style="flex-grow: 1; justify-content: center;">-->
-<!--            <a class="navbar-item" href="https://keunhong.com">-->
-<!--      <span class="icon">-->
-<!--          <i class="fas fa-home"></i>-->
-<!--      </span>-->
-<!--            </a>-->
-
-<!--            <div class="navbar-item has-dropdown is-hoverable">-->
-<!--                <a class="navbar-link">-->
-<!--                    More Research-->
-<!--                </a>-->
-<!--                <div class="navbar-dropdown">-->
-<!--                    <a class="navbar-item" href="https://hypernerf.github.io">-->
-<!--                        HyperNeRF-->
-<!--                    </a>-->
-<!--                    <a class="navbar-item" href="https://nerfies.github.io">-->
-<!--                        Nerfies-->
-<!--                    </a>-->
-<!--                    <a class="navbar-item" href="https://latentfusion.github.io">-->
-<!--                        LatentFusion-->
-<!--                    </a>-->
-<!--                    <a class="navbar-item" href="https://photoshape.github.io">-->
-<!--                        PhotoShape-->
-<!--                    </a>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-
-<!--    </div>-->
-<!--</nav>-->
-
 
 <section class="hero">
     <div class="hero-body">
@@ -131,8 +91,10 @@
                         type="video/mp4">
             </video>
             <h2 class="subtitle has-text-centered">
-                <b>TacGraph</b> utilizes visual and distributed tactile feedback to estimate in-hand <span style="color: rgb(224, 216, 120);"><b>object pose</b></span> and
-                <span style="color: rgb(137, 37, 139);"><b>extrinsic contact</b></span>. We utilize <i>factor graphs</i> to enforce physical constraints and to efficiently
+                <b>TacGraph</b> utilizes visual and distributed tactile feedback to estimate in-hand <span
+                    style="color: rgb(224, 216, 120);"><b>object pose</b></span> and
+                <span style="color: rgb(137, 37, 139);"><b>extrinsic contact</b></span>. We utilize <i>factor graphs</i>
+                to enforce physical constraints and to efficiently
                 solve.
             </h2>
         </div>
@@ -266,14 +228,99 @@
             </div>
             <div class="content">
                 <p>
-                    We show comparison of <span style="color: rgb(184, 183, 89);">predicted</span> and <span style="color: rgb(83, 123, 42);">ground truth</span>
-                    pose and <span style="color: rgb(122, 5, 114);">predicted</span> and <span style="color: rgb(250, 76, 80);">ground truth</span>
-                    extrinsic contact estimates from <b>tactile only</b> feedback. The results indicate that the contacts
+                    We show comparison of <span style="color: rgb(184, 183, 89);">predicted</span> and <span
+                        style="color: rgb(83, 123, 42);">ground truth</span>
+                    pose and <span style="color: rgb(122, 5, 114);">predicted</span> and <span
+                        style="color: rgb(250, 76, 80);">ground truth</span>
+                    extrinsic contact estimates from <b>tactile only</b> feedback. The results indicate that the
+                    contacts
                     are utilized by our proposed framework to narrow down and disambiguate the local tactile feedback,
                     yielding highly accurate predictions.
                 </p>
             </div>
         </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container is-max-desktop">
+
+        <!-- Section header -->
+        <h2 class="title is-3">Application: Open-Loop Insertion</h2>
+
+        <!-- 2x2 video grid -->
+        <div class="columns is-multiline is-centered">
+
+            <!-- Video 1 -->
+            <div class="column is-half">
+                <figure>
+                    <video autoplay controls muted loop playsinline
+                           style="width: 100%; height: auto;">
+                        <source src="./static/videos/insertion/tacgraph.mp4"
+                                type="video/mp4">
+                    </video>
+                    <figcaption class="has-text-centered is-size-5 mt-2">
+                        (a) <b>TacGraph (Ours)</b>
+                    </figcaption>
+                </figure>
+            </div>
+
+            <!-- Video 2 -->
+            <div class="column is-half">
+                <figure>
+                    <video autoplay controls muted loop playsinline
+                           style="width: 100%; height: auto;">
+                        <source src="./static/videos/insertion/icp.mp4"
+                                type="video/mp4">
+                    </video>
+                    <figcaption class="has-text-centered is-size-5 mt-2">
+                        (b) ICP
+                    </figcaption>
+                </figure>
+            </div>
+
+            <!-- Video 3 -->
+            <div class="column is-half">
+                <figure>
+                    <video autoplay controls muted loop playsinline
+                           style="width: 100%; height: auto;">
+                        <source src="./static/videos/insertion/chsel.mp4"
+                                type="video/mp4">
+                    </video>
+                    <figcaption class="has-text-centered is-size-5 mt-2">
+                        (c) CHSEL
+                    </figcaption>
+                </figure>
+            </div>
+
+            <!-- Video 4 -->
+            <div class="column is-half">
+                <figure>
+                    <video autoplay controls muted loop playsinline
+                           style="width: 100%; height: auto;">
+                        <source src="./static/videos/insertion/scope.mp4"
+                                type="video/mp4">
+                    </video>
+                    <figcaption class="has-text-centered is-size-5 mt-2">
+                        (d) SCOPE (v2)
+                    </figcaption>
+                </figure>
+            </div>
+
+        </div>
+
+        <!-- Text description -->
+        <div class="content mt-5">
+            <p>
+                We demonstrate application of TacGraph for open-loop insertion with tactile-only feedback. We perform
+                a series of exploratory pokes and run inference with each method, then use the final estimate to perform
+                an open loop insertion with <i>low tolerance</i> (~3mm). We show comparison to several baselines. Our
+                method is the only to succeed on this example and has the highest success rate across 4 test objects
+                (see paper for details). We show the final estimate of each method against the ground truth and the
+                attempted insertion.
+            </p>
+        </div>
+
     </div>
 </section>
 
